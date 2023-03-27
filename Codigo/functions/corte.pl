@@ -1,20 +1,19 @@
 /*
-    ### El corte permite decirle a Prolog cuales son las opciones previas que no hace falta
-    ### que vuelva a considerar en un posible proceso de reevaluacion. 
-    ### Se aplica mediante el siguiente simbolo: !
-    #
+    ? El corte permite decirle a Prolog cuales son las opciones previas que no hace falta
+    ? que vuelva a considerar en un posible proceso de reevaluacion. 
+    ? Se aplica mediante el siguiente simbolo: 
 
-    ### ¿En qué casos utilizar el corte?
-    # 1. Para optimizar la ejecución.
-    # 2. Para facilitar la legibilidad y comprensión del algoritmo que está siendo programado
-    # 3. Para implementar algoritmos diferentes según la combinación de argumentos de entrada
-    # 4. Para conseguir que un predicado solamente tenga una solución.
-    ###---------------------------------------------------------------------------------------
+    ? ¿En qué casos utilizar el corte?
+    *   1. Para optimizar la ejecución.
+    *   2. Para facilitar la legibilidad y comprensión del algoritmo que está siendo programado
+    *   3. Para implementar algoritmos diferentes según la combinación de argumentos de entrada
+    *   4. Para conseguir que un predicado solamente tenga una solución.
+    ? ---------------------------------------------------------------------------------------
 */
 
 /* 
-    Biblioteca
-    Los servicios de consulta son servicios básicos
+*   Biblioteca
+*   Los servicios de consulta son servicios básicos
 */
 servicio_basico(consulta_BD).
 servicio_basico(consulta_Interna).

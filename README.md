@@ -1,7 +1,5 @@
 # ProLog
 
-# Exercises about ProLog IA using VSCode IDE
-
 ## Exercises about ProLog IA[^1] using VSCode IDE.
 
 #### Used extensions

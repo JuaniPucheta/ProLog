@@ -42,12 +42,18 @@ hermana(A,B) :- mujer(A), padres(A, M, P), padres(B, M, P), A \= B.
 nieto(A,B) :- 
     hombre(A), 
     padres(A, Madre, Padre), 
-    (padres(Madre, B, _); padres(Padre, B, _)).
+    (padres(Madre, B, _); padres(Padre, B, _); padres(Madre, _, B); padres(Padre, _, B)).
 
-nieto(A,B) :- 
+% Regla para abuelo/2: para que la regla funcione:
+/*
+    abraham es abuelo de bart, lisa y maggie.
+    clancy es abuelo de bart, lisa, maggie y ling.
+*/ 
+abuelo(A,B) :- %! me tira como abuelo: homero, bart 
     hombre(A), 
-    padres(A, Madre, Padre), 
-    (padres(Madre, _, B); padres(Padre, _, B)).
+    padres(B, Madre, Padre), 
+    (padres(Madre, A, _); padres(Padre, A, _); padres(Madre, _, A); padres(Padre, _, A)).
 
-% Regla para abuelo/2
-abuelo(A,B) :- hombre(A), padres(C, _, A), padres(B, C, _).
+%Regla para tia/2 para la primera instancia %! anda mal, tira tia a lisa y maggie
+tia2(A,B):-mujer(A), padres(B, MadreB, _), hermana(A,MadreB).
+tia2(A,B):-mujer(A), padres(B, _, PadreB), hermana(A,PadreB).

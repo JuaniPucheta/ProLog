@@ -38,22 +38,37 @@ padres(ling, selma, _).
 % Regla para hermana/2
 hermana(A,B) :- mujer(A), padres(A, M, P), padres(B, M, P), A \= B.
 
-% Regla para nieto/2: para que la regla funcione, bart debe ser nieto de abraham, y debe ser nieto de clancy
-nieto(A,B) :- 
-    hombre(A), 
-    padres(A, Madre, Padre), 
-    (padres(Madre, B, _); padres(Padre, B, _); padres(Madre, _, B); padres(Padre, _, B)).
+% Regla para nieto/2
+nieto(A,B):- padres(A,_,P),padres(P,B,_).
+nieto(A,B):- padres(A,_,P),padres(P,_,B).
+nieto(A,B):- padres(A,M,_),padres(M,B,_).
+nieto(A,B):- padres(A,M,_),padres(M,_,B).
 
-% Regla para abuelo/2: para que la regla funcione:
-/*
-    abraham es abuelo de bart, lisa y maggie.
-    clancy es abuelo de bart, lisa, maggie y ling.
-*/ 
-abuelo(A,B) :- %! me tira como abuelo: homero, bart 
-    hombre(A), 
-    padres(B, Madre, Padre), 
-    (padres(Madre, A, _); padres(Padre, A, _); padres(Madre, _, A); padres(Padre, _, A)).
+% Regla para abuelo/2: 
+abuelo(A,B) :- padres(B,_,P),padres(P,A,_).
+abuelo(A,B) :- padres(B,_,P),padres(P,_,A).
+abuelo(A,B) :- padres(B,M,_),padres(M,A,_).
+abuelo(A,B) :- padres(B,M,_),padres(M,_,A).
 
-%Regla para tia/2 para la primera instancia %! anda mal, tira tia a lisa y maggie
-tia2(A,B):-mujer(A), padres(B, MadreB, _), hermana(A,MadreB).
-tia2(A,B):-mujer(A), padres(B, _, PadreB), hermana(A,PadreB).
+
+%Regla para tia/2 para la primera instancia de la regla
+tia(T,S) :-
+    mujer(T),
+    padres(T, M, P),
+    padres(B, M, P),
+    M \= P,
+    padres(S, B, _).
+tia(T,S) :-
+    mujer(T),
+    padres(T, M, P),
+    padres(B, M, P),
+    M \= P,
+    padres(S, _, B).
+
+%Regla para tia/2 para la segunda instancia de la regla
+tia(T,S) :- 
+    hermana(T, B),
+    padres(S, B, _).
+tia(T,S) :-
+    hermana(T, B),
+    padres(S, _, B).

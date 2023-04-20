@@ -32,8 +32,9 @@ signo(Dia, Mes, Signo) :-
 
 
 % b. Ingresar una fecha (día y mes) y me informe de qué signo soy.
-signo(Dia, Mes, Signo) :-
+signo(Dia, Mes, _) :-
     horoscopo(Signo, DiaInicio, MesIni, DiaFin, MesFin),
     Mes =< MesFin,
     Mes >= MesIni,
-    ((Mes =:= MesIni, Dia >= DiaInicio) ; (Mes =:= MesFin, Dia =< DiaFin)).
+    ((Mes =:= MesIni, Dia >= DiaInicio) ; (Mes =:= MesFin, Dia =< DiaFin)),
+    write(Signo).

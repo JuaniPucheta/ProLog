@@ -6,12 +6,12 @@ observa(gabriela,flavio).
 observa(maria,carlos).
 
 %? Ejecutar las siguientes preguntas al Prolog y analizar la respuesta dada en cada caso.
-observa(maria,flavio). 
-observa(maria,Quien). 
-observa(maria,_). 
-observa(Quien,flavio). 
-observa(Quien1,Quien2).
-observa(_,_). 
+% observa(maria,flavio). 
+% observa(maria,Quien). 
+% observa(maria,_). 
+% observa(Quien,flavio). 
+% observa(Quien1,Quien2).
+% observa(_,_). 
 
 /*  %! RESPUESTAS:
     a. observa(maria,flavio).

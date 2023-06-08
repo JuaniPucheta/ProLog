@@ -22,7 +22,17 @@ suma(N, SumPares, SumImpares) :-
       SumPares is P2
    ).
 
-/* %? EXPLICACIÓN DEL CÓDIGO 
+% otra forma
+inicio:-
+    read(N),
+    suma(N, SumPares, SumImpares),
+    write(SumPares), nl,
+    write(SumImpares).
+
+suma(0, 0, 0).
+% y ahora llamo al predicado suma de arriba (linea 13)
+
+/*
     El predicado suma/3 tiene tres argumentos: N, que es el número ingresado y SumImparesy SumPares, 
         que son los resultados calculados.
 

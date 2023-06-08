@@ -7,9 +7,16 @@
         . Sum es el resultado calculado (argumento de salida).
 */
 
-suma(5,15).
+suma(5,15). % esto solo si no defino la clausula "inicio" en la linea 18
 suma(N,Sum) :-          % N = 5
     N > 0,              % 5 > 0
     N1 is N-1,          % N1 = 5-1 = 4
     suma(N1,Sum1),      % suma(4,Sum1)
     Sum is Sum1+N.      % Sum = Sum1+5 = 15
+
+% Otra forma
+inicio :- 
+    write('Ingrese un numero: '), 
+    read(N), 
+    suma(N,Sum), 
+    write('La sumatoria es: '), write(Sum).

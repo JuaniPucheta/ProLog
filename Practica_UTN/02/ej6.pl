@@ -4,9 +4,14 @@
 inicio :- 
     write("Ingrese una lista de numeros enteros: "), 
     leer(Lista),
-    write(Lista),
-    primero(Lista, Primero)
+    primero(Lista, Primero),
     ultimo(Lista, Ultimo), 
-    diferencia(Primi, Ult),
-    write("La diferencia es: "),
-    write()
+    Diferencia is Ultimo - Primero,
+    write("La diferencia entre el primero y el ultimo es: "),
+    write(Diferencia).
+
+leer([H|T]) :- read(H), H \= [], leer(T).
+leer([]).
+primero([H|_], H).
+ultimo([H|[]], H).
+ultimo([_|T], Ultimo) :- ultimo(T, Ultimo).

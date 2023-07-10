@@ -46,10 +46,10 @@ leer([H|T]):- read(H), H\=[], leer(T).
 leer([]).
 
 minimo([], Min, Min).
-minimo([H|T], Min0, Min):- H < Min0, minimo(T, H, Min).
-minimo([_|T], Min0, Min):- minimo(T, Min0, Min).
+minimo([H|T], MinIni, Min):- H < MinIni, minimo(T, H, Min).
+minimo([_|T], MinIni, Min):- minimo(T, MinIni, Min).
 
 maximo([], Max, Max).
-maximo([H|T], Max0, Max):- H > Max0, maximo(T, H, Max).
-maximo([_|T], Max0, Max):- maximo(T, Max0, Max).
+maximo([H|T], MaxIni, Max):- H > MaxIni, maximo(T, H, Max).
+maximo([_|T], MaxIni, Max):- maximo(T, MaxIni, Max).
 

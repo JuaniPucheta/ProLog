@@ -11,21 +11,4 @@ conoce(omar,ingles).
 conoce(maria,frances).
 
 %? REGLA:
-es_hablado(Idioma,Persona):-conoce(Persona,Idioma).
-
-/* %! ALGUNOS RESULTADOS:
-    ?- es_hablado(ingles,franco).
-    true.
-
-    ?- es_hablado(ingles,renzo).
-    true.
-
-    ?- es_hablado(ingles,marco).
-    true.
-
-    ?- es_hablado(ingles,omar).
-    true.
-
-    ?- es_hablado(ingles,maria).
-    false.
-*/
+habla_ambos(X):- conoce(X,ingles), conoce(X, frances).

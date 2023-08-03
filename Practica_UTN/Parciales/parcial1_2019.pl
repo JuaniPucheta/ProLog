@@ -28,7 +28,7 @@ inicio :- write("Ingrese una persona: "), read(Persona),
     write("Ingrese el nombre del modelo: "), read(NombreModelo),
     not(compro_auto_autonomo(Persona, AnioCompra, NombreModelo)),
     modelo_marca(NombreModelo, Marca),
-    write("La persona "), write(Persona), write(" no compro un auto de marca "), write(Marca), write(" en el anio "), write(AnioCompra), write("."), nl.
+    write("La persona "), write(Persona), write(" no compro un auto de marca "), write(Marca), write(" en el anio "), write(AnioCompra).
 
 /* Ejercicio 2
     Siguiendo el caso de la empresa de venta de autos autónomos hacer un programa   
@@ -44,7 +44,7 @@ inicio2:- write("Ingrese una lista de precios: "), leer(Lista),
     Suma is H1 + H2 + Ultimo,
     write("La suma del primer elemento de la lista, mas el segundo, mas el ultimo es: "), write(Suma), nl,
     penultimo(Lista, Penultimo),
-    write("El penultimo elemento de la lista es: "), write(Penultimo), nl.
+    write("El penultimo elemento de la lista es: "), write(Penultimo).
 
 leer([H|T]) :- read(H), H \= [], leer(T).
 leer([]).

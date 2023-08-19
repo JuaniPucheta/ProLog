@@ -24,5 +24,17 @@ intereses(9,['cumbia','diario clarin','redes neuronales','TC 2000']).
 intereses(10,['natacion','pelicula El ciudadano ilustre','reiki','cocinar','cine']).
 intereses(11,['vida al aire libre','perros','astrologia','yoga','comida mexicana','U2', 'TC 2000']).
 
+/*
+    En una nueva red social UTNook, se tiene la siguiente base de hechos  (la que esta arriba)
 
-
+    Dos usuarios de UTNook son candidatos a ser amigos cuando tienen al 
+    menos 2 intereses en común.
+    Construir un programa en PROLOG que permita:
+        a. Dados dos usuarios, mostrar una lista con los intereses que tienen en 
+        común.
+        b. Determinar si dos usuarios son candidatos a ser amigos.
+        c. Dados dos usuarios, obtener una lista con todos los intereses de 
+        ambos.
+        d. Dada una ciudad, obtener una lista con los usuarios que viven en ella 
+        (utilizando el predicado findall/3)
+*/

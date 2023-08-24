@@ -34,6 +34,7 @@ buscar(Codigo):-
     assert(personas(Codigo, Nombre)),
     guardar_base.
 
-guardar_base:- tell("ej2.txt"), listing(personas), told.
+guardar_base:- tell('ej2.txt'), listing(personas), told.
+    %! es con comilla simple
 
 

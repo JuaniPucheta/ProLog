@@ -1,4 +1,8 @@
+:- dynamic personas/2.
+
 personas(1, juan).
 personas(2, maria).
 personas(3, pedro).
 personas(4, jose).
+personas(6, mauricio).
+

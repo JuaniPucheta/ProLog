@@ -1,0 +1,8 @@
+:- dynamic gasto/3.
+
+gasto(juan, alquiler, 1000).
+gasto(maria, luz, 200).
+gasto(pedro, supermercado, 300).
+gasto(pedro, luz, 500).
+gasto(jose, agua, 500).
+gasto(javier, cable , 5000).

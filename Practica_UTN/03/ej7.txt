@@ -1,0 +1,33 @@
+%? el contador en linea 20 y 29 esta arriba en vez de abajo porque si no no funciona
+
+inicio:- 
+    write('Ingrese una cadena: '), 
+    read(Cadena),
+    %! ASI NO => cantidad(Cadena, 0, 0, ContA, ContB),
+    cantidad(Cadena, ContA, ContB),
+    ContA == ContB,
+    write('Corresponde, misma ^n').
+
+  %! ASI NO => cantidad(Cadena, CantidadA, CantidadB, CantidadA, CantidadB):- % cadena 0 0
+cantidad(Cadena, 0, 0):- % cadena 0 0
+  %! ASI NO => atom_length(Cadena, Cant), % cadena 0
+atom_length(Cadena, 0), 
+  %! ASI NO => Cant == 0. % y esto se borra
+
+cantidad(Cadena, CantidadA, CantidadB, CA, CB):-  
+  atom_length(Cadena, C), 
+  D is C - 1, 
+  D >= 0, 
+  sub_atom(Cadena,1,D,_,SubCadena),  % cadena 1 _ 0  
+  sub_atom(Cadena,0,1,_,'a'),
+  ContA is CantidadA + 1,
+  cantidad(SubCadena, ContA, CantidadB, CA, CB).
+
+cantidad(Cadena, CantidadA, CantidadB, CA, CB):-  
+  atom_length(Cadena, C),
+  D is C - 1, 
+  D >= 0, 
+  sub_atom(Cadena,1,D,_,SubCadena),  
+  sub_atom(Cadena,0,1,_,'b'),
+  ContB is CantidadB + 1,
+  cantidad(SubCadena, CantidadA, ContB, CA, CB).

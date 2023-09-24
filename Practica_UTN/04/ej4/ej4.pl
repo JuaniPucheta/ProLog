@@ -63,32 +63,44 @@ opcion(3):-
     write("Ingrese el nombre de la persona: "),
     read(Persona), 
     promedio(Persona, Cantidad, Total),
+    % promedio_super(Persona, CantidadS, TotalS),
+    % promedio_tel(Persona, CantidadT, TotalT),
+    % Cantidad is CantidadS + CantidadT,
+    % Total is TotalS + TotalT,
     Promedio is Total/Cantidad, 
     write(Promedio), nl.
 
-promedio(Persona, Cont, Total):- 
-    retract(gasto(Persona, super(_, Monto))),
-    gasto(Persona, super(_, Monto)),
-    promedio(Persona, ContAnterior, TotalAnterior),
-    Total is TotalAnterior + Monto, 
-    Cont is ContAnterior + 1.
 
-promedio(Persona, Cont, Total):-
-    retract(gasto(Persona, tel(_,_,Monto))),
+% promedio_super(Persona, Cont, Total):-
+%     gasto(Persona, super(_,Monto)),
+%     retract(gasto(Persona, super(_,Monto))),
+%     promedio_super(Persona, ContAnterior, TotalAnterior),
+%     Total is TotalAnterior + Monto, 
+%     Cont is ContAnterior + 1.
+
+% promedio_super(_, 0, 0).
+
+% promedio_tel(Persona, Cont, Total):-
+%     gasto(Persona, tel(_,_,Monto)),
+%     retract(gasto(Persona, tel(_,_,Monto))),
+%     promedio_tel(Persona, ContAnterior, TotalAnterior),
+%     Total is TotalAnterior + Monto, 
+%     Cont is ContAnterior + 1.
+
+% promedio_tel(_, 0, 0).
+
+promedio(Persona, Cantidad, Total):-
+    gasto(Persona, super(_,Monto)), %el retract va justo debajo de llamar a la db
+    retract(gasto(Persona, super(_,Monto))),
+    promedio(Persona, CantidadAnterior, TotalAnterior),
+    Cantidad is CantidadAnterior + 1,
+    Total is TotalAnterior + Monto.
+
+promedio(Persona, Cantidad, Total):-
     gasto(Persona, tel(_,_,Monto)),
-    promedio(Persona, ContAnterior, TotalAnterior),
-    Total is TotalAnterior + Monto, 
-    Cont is ContAnterior + 1.
+    retract(gasto(Persona, tel(_,_,Monto))),
+    promedio(Persona, CantidadAnterior, TotalAnterior),
+    Cantidad is CantidadAnterior + 1,
+    Total is TotalAnterior + Monto.
 
 promedio(_,0,0).
-
-% promedio(Persona, Cant, Total):-
-%     retract(gasto(Persona, Gasto)),
-%     gasto_monto(Gasto, Monto), 
-%     promedio(Persona, CantAnterior,TotalAnterior),
-%     Total is TotalAnterior + Monto, Cant is CantAnterior + 1.
-
-% promedio(_,0,0).  
-
-% gasto_monto(super(_,Monto), Monto).
-% gasto_monto(tel(_,_,Monto), Monto).

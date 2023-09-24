@@ -1,0 +1,11 @@
+:- dynamic recetas/3.
+
+recetas(1, tarta, ingrediente(harina,10)).
+recetas(1, tarta, ingrediente(sal,10)).
+recetas(1, tarta, ingrediente(agua,2)).
+recetas(1, tarta, ingrediente(azucar,1)).
+
+recetas(2, flan, ingrediente(harina,5)).
+recetas(2, flan, ingrediente(sal,5)).
+
+recetas(3, asado, ingrediente(carne,3)).

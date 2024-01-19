@@ -10,17 +10,17 @@ inicio:- writeln('Ingrese una lista: '),
 leer([H|T]):- read(H), H\=[], leer(T).
 leer([]).
 
+pertenece([H|_], H).
+pertenece([_|T], H) :- pertenece(T,H).
+
 repetidos([], []).
 repetidos([H|T], [H|T2]) :- pertenece(T, H), repetidos(T,T2).
 repetidos([_|T], T2):- repetidos(T, T2).
 
-pertenece([H|_], H).
-pertenece([_|T], H) :- pertenece(T,H).
-
 %* Otra forma
-    % pertenece(X, [X|_]).
-    % pertenece(X, [_|T]):- pertenece(X, T).
-
-    % primer_repetido([H|T], H):- pertenece(T, H), write("El primer elemento repetido es: "), writeln(H).
-    % primer_repetido([_|T]):- primer_repetido(T).
-    % primer_repetido([]):- write("No hay elementos repetidos").
+    % repetidos([], []).
+    % repetidos([H|T], [H|T2]) :- pertenece(H, T), repetidos(T,T2).
+        %? (1) el primer H esta instanciado, el segundo no
+        %? (2) si el pertenece da true, el primer H se copia en la lista que estoy armando
+    % repetidos([_|T], Repetidos):- repetidos(T, Repetidos).
+        %? (3) si falla, viene aca. Ignoro la cabeza, envio recursivamente la cola y Repetidos

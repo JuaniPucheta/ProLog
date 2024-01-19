@@ -1,4 +1,5 @@
 %  Ingresar una lista y un elemento e informar cuántas veces está ese elemento en la lista.
+%! MUY PEDIDO EN EXAMENES
 
 inicio:- write("Ingrese una lista: "), 
     leer(Lista), 

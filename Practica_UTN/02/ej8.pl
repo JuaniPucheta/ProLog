@@ -10,5 +10,5 @@ leer([]).
 
 sumatoria([], 0).   
 sumatoria([H|T], Sumatoria) :- 
-    sumatoria(T, Sumatoria1),  
-    Sumatoria is H + Sumatoria1. 
+    sumatoria(T, Suma),  
+    Sumatoria is H + Suma. 

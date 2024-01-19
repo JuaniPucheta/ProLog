@@ -12,6 +12,8 @@ inicio :-
 
 leer([H|T]) :- read(H), H \= [], leer(T).
 leer([]).
-primero([H|_], H).
+
+primero([H|_], H).  %* [H] = [H|_]
+
 ultimo([H|[]], H).
 ultimo([_|T], Ultimo) :- ultimo(T, Ultimo).

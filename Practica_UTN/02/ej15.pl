@@ -16,3 +16,11 @@ repetidos([_|T], T2):- repetidos(T, T2).
 
 pertenece([H|_], H).
 pertenece([_|T], H) :- pertenece(T,H).
+
+%* Otra forma
+    % pertenece(X, [X|_]).
+    % pertenece(X, [_|T]):- pertenece(X, T).
+
+    % primer_repetido([H|T], H):- pertenece(T, H), write("El primer elemento repetido es: "), writeln(H).
+    % primer_repetido([_|T]):- primer_repetido(T).
+    % primer_repetido([]):- write("No hay elementos repetidos").

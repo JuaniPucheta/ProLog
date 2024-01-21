@@ -13,3 +13,13 @@ inicio:- write("Ingrese una cadena de texto: "),
 
 consubatom(Cadena, Longitud2) :- sub_atom(Cadena, 0, Longitud2, 0, _).
 consubatom(Cadena, Longitud2) :- Longitud3 is Longitud2 - 1, consubatom(Cadena, Longitud3).
+
+%* Otra forma
+    % inicio:- write("Ingrese una cadena de texto: "),
+    % read(Cadena),
+    % contar_caracteres(C, Cant), write("La longitud de la cadena es: "), write(Cant).
+
+    % contar_caracteres('', 0).
+    % contar_caracteres(C, Cant) :- sub_atom(C, 1, _, 0, Sub),
+    %                               contar_caracteres(Sub, CantSub),
+    %                               Cant is CantSub + 1.

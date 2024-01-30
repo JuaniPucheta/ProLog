@@ -5,6 +5,8 @@
     cuál es el mayor de todos los números.
 */
 
+%! Importante aprender
+
 inicio:- write("Ingrese una lista de numeros enteros: "), 
     leer(Lista),
     mayor(Lista, 0, Mayor),

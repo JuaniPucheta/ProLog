@@ -23,7 +23,7 @@ inicio :-
     inicio.
 inicio.
 
-%* Gastos del grupo de personas
+%* Gastos del grupo de personas CON FAIL
 opcion(1) :-
     gastos_general.
 
@@ -31,6 +31,15 @@ opcion(1) :-
         gasto(Persona, _, Gasto),
         write(Persona), write(" - "), write(Gasto), nl,
         fail.
+
+%* Gastos del gurpo de personas CON RETRACT
+    % gastos_general :-
+    %     gasto(Persona, _, Gasto),
+    %     write(Persona), write(" - "), write(Gasto), nl,
+    %     retract(gasto(Persona, _, Gasto)),
+    %     gastos_general.
+    % gastos_general.
+
     
 %* Gastos del grupo de una persona 
 opcion(2):- 

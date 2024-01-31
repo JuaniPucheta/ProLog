@@ -9,8 +9,8 @@ alimentacion(liebre, carne, 2).
 bebida(leon, agua, 10).
 bebida(liebre, agua, 10).
 
-reproduccion(diciembre, 9).
-reproduccion(enero, 3).
+reproduccion(leon, diciembre, 9).
+reproduccion(liebre, enero, 3).
 
 horas_suenio(leon, 8).
 horas_suenio(liebre, 4).

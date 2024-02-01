@@ -1,0 +1,8 @@
+:- dynamic libro/5.
+
+libro(1, elhobbit, jrrtolkien, editorial, 1).
+libro(2, boca, juniors, asd, 12).
+libro(3, central, rosario, bbbb, 1).
+libro(4, elviejoyelmar, jip, ccccc, 10).
+libro(5, hola, jip, ccccc, 40).
+

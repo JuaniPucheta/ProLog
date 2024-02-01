@@ -1,0 +1,8 @@
+:- dynamic gasto/2.
+
+gasto(maria, super(coto,500)).
+gasto(omar, super(libertad,1500)).
+gasto(omar, super(libertad,1000)).
+
+gasto(omar, tel(fijo,telecom,150)).
+gasto(maria,tel(movil,personal,100)).

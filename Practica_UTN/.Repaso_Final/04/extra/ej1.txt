@@ -1,0 +1,14 @@
+:- dynamic usuario/3.
+:- intereses intereses/2.
+
+usuario(1, miguel, rosario).
+usuario(2, maria, rafaela).
+usuario(3, juan, rafaela).
+usuario(4, jose, rosario).
+usuario(5, mariana, rafaela).
+
+intereses(1,['natacion','redes neuronales','yoga','comida mexicana']).
+intereses(2,['natacion','redes neuronales','yoga','comida mexicana']).
+intereses(3, ['futbol', 'comida mexicana', 'peliculas']).
+intereses(4, ['futbol', 'comida mexicana', 'peliculas']).
+intereses(5, ['basketball', 'natacion', 'kungfu', 'comida china']).

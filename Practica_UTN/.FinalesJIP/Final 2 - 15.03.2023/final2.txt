@@ -1,0 +1,20 @@
+vehiculos(toyota, 1000, auto, nuevo, [1,5,7,9]).
+vehiculos(ford, 4000, chata, nuevo, [1,5,7,9]).
+vehiculos(ford, 1100, auto, usado, [1,5,7,9]).
+vehiculos(toyota, 1500, auto, usado, [2,5,7,9]).
+vehiculos(chevrolet, 3000, auto, nuevo, [1,3,6,8,9]).
+vehiculos(ford, 8000, camion, nuevo, [4,9]).
+vehiculos(toyota, 1200, auto, nuevo, [6,8]).
+
+
+caracteristicas(1, rojo).
+caracteristicas(2, verde).
+caracteristicas(3, azul).
+caracteristicas(4, amarillo).
+caracteristicas(5, cuatropuertas).
+caracteristicas(6, trespuertas).
+caracteristicas(7, grande).
+caracteristicas(8, chico).
+caracteristicas(9, naftero).
+caracteristicas(9, electrico).
+

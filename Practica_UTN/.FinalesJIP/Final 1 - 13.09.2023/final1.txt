@@ -1,0 +1,26 @@
+paciente(1, juan,'Sancor Salud').
+paciente(2, sergio,'Federada').
+paciente(3, raul,'Osde').
+paciente(4, alberto,'Sancor Salud').
+paciente(5, jose,'Osde').
+paciente(6, pedro,'Osde').
+
+profesional(1111,doctor1,traumatologo,'Sancor Salud').
+profesional(2222,doctor2,clinico,'Sancor Salud').
+profesional(3333,doctor3,clinico,'Osde').
+profesional(4444,doctor4,cardiologo,'Federada').
+profesional(5555,doctor5,cardiologo,'Sancor Salud').
+profesional(6666,doctor6,traumatologo,'Osde').
+profesional(7777,doctor7,traumatologo,'Sancor Salud').
+
+turno(1,1111,traumatologo, 2023,'Sancor Salud',1000).
+turno(1,1111,alergista, 2023,'Sancor Salud',4000).
+turno(1,5555,cardiologo, 2023,'Sancor Salud',1000).
+turno(1,1111,traumatologo, 2023,'Sancor Salud',3000).
+turno(1,1111,traumatologo, 2022,'Sancor Salud',3000).
+turno(1,1111,traumatologo, 2021,'Sancor Salud',2000).
+
+turno(2,2222,clinico, 2023,'Federada',2000).
+
+turno(2,2222,clinico, 2021,'Federada',5000).
+turno(3,3333,clinico, 2023,'Osde',4000).

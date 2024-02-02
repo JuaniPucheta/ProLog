@@ -35,7 +35,7 @@ inicio :-
 inicio.
 
 %* sub_atom(Cadena, ComienzoCadena, CantidadCaracteres, CantidadCaracteresRestantes, SubCadena)
-%! Importante --> atom_number
+%! Importante --> atom_number cuando me piden trabajar con AÑOS por teclado (sino usar 'YYYY')
 opcion(1) :-
     write('Ingrese DNI: '), read(Dni),
     write('Ingrese anio'), read(Anio),

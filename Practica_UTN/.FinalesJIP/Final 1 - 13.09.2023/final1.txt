@@ -17,6 +17,7 @@ turno(1,1111,traumatologo, 2023,'Sancor Salud',1000).
 turno(1,1111,alergista, 2023,'Sancor Salud',4000).
 turno(1,5555,cardiologo, 2023,'Sancor Salud',1000).
 turno(1,1111,traumatologo, 2023,'Sancor Salud',3000).
+
 turno(1,1111,traumatologo, 2022,'Sancor Salud',3000).
 turno(1,1111,traumatologo, 2021,'Sancor Salud',2000).
 

@@ -34,23 +34,36 @@ inicio :-
     inicio.
 inicio.
 
-%TODO --> consultar de hacer listar_especialidades(Paciente, Anio, [H|T]) 
-%* Actualmente, muestra todos pero con Traumatologo x2
+%TODO --> consultar, actualmente, muestra todos pero con Traumatologo x2
+%* Sin lista
+%  opcion(1) :- 
+%     write('Ingrese un paciente: '), read(Paciente),
+%     write('Ingrese un anio: '), read(Anio),
+%     listar_especialidades(Paciente, Anio).
+
+%     listar_especialidades(Paciente, Anio) :-
+%         paciente(Dni, Paciente, _),
+%         turno(Dni, _, Especialidad, Anio, _, _), nl,
+%         write('Especialidad: '), write(Especialidad), nl,
+%         retract(paciente(Dni, Paciente, _)),
+%         retract(turno(Dni, _, Especialidad, Anio, _, _)),
+%         listar_especialidades(Paciente, Anio).
+%     listar_especialidades(_,_,[]).
+
+%* Con lista
 opcion(1) :-
     write('Ingrese un paciente: '), read(Paciente),
     write('Ingrese un anio: '), read(Anio),
-    listar_especialidades(Paciente, Anio).
+    listar_especialidades(Paciente, Anio, Especialidades),
+    write('Especialidades de ese paciente para es anio: '), write(Especialidades), nl.
 
-    listar_especialidades(Paciente, Anio) :-
+    listar_especialidades(Paciente, Anio, [H|T]) :-
         paciente(Dni, Paciente, _),
-        turno(Dni, _, Especialidad, Anio, _, _), nl,
-        write('Especialidad: '), write(Especialidad), nl,
-        retract(paciente(Dni, Paciente, _)),
-        retract(turno(Dni, _, Especialidad, Anio, _, _)),
-        listar_especialidades(Paciente, Anio).
+        turno(Dni, _, H, Anio, _, _), nl,
+        retract(turno(Dni, _, H, Anio, _, _)),
+        listar_especialidades(Paciente, Anio, T).
     listar_especialidades(_,_,[]).
 
-%TODO --> consultar porque tengo que hacer un metodo que englobe todo, si deberia andar igual
 opcion(2) :-
     buscar_cantidad_turnos.
 

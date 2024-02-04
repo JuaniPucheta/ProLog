@@ -1,0 +1,25 @@
+% personas(Nombre, Edad, [Profesiones],Ciudad).
+% cursos(Profesion, [Cursos]).
+% personas_cursos(Nombre,Profesion,[CursosRealizados]).
+
+personas(juan, 20, [medico,dentista,ingeniero,dt],rosario).
+personas(jorge, 15, [medico,ingeniero,dt],rosario).
+personas(miguel, 18, [ingeniero,dt],rosario).
+personas(manuel, 22, [portero,futbolista,tenista],rosario).
+personas(lucila, 29, [medico,dentista,ingeniero,dt],casilda).
+personas(roberto, 16, [medico,dentista,ingeniero,dt],rosario).
+
+cursos(medico,[1,2,3,4]).
+cursos(ingeniero,[1,2,3,4]).
+cursos(dentista,[1,2,3]).
+cursos(dt,[1,2,3,4]).
+cursos(portero,[1,2,3,4,5]).
+cursos(tenista,[1,2,3,4]).
+
+personas_cursos(juan,medico,[1,2,3,4]).
+personas_cursos(jorge,medico,[1,2]).
+personas_cursos(roberto,medico,[1,2,3,4]).
+personas_cursos(lucila,medico,[1,4]).
+personas_cursos(miguel,ingeniero,[2,3,4]).
+personas_cursos(manuel,portero,[3,4]).
+personas_cursos(juan,medico,[1]).

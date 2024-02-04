@@ -1,0 +1,19 @@
+sucursal(1,roja).
+sucursal(2,verde).
+sucursal(3,celeste).
+sucursal(4,azul).
+sucursal(5,blanca).
+sucursal(6,negra).
+
+producto(1, coca, 'si', '25/09/2022', 1).
+producto(2, seven, 'si', '25/09/2023', 1).
+producto(3, masitas, 'no', '25/09/2024', 1).
+producto(4, chipa, 'no', '25/09/2024', 1).
+producto(5, yerba, 'no', '25/09/2024', 1).
+producto(6, agua, 'si', '25/09/2024', 2).
+producto(7, carne, 'si', '25/09/2023', 2).
+producto(8, budin, 'no', '25/09/2023', 2).
+producto(9, pescado, 'si', '25/09/2024', 2).
+producto(10, pollo, 'si', '25/09/2025', 3).
+producto(11, atun, 'no', '25/09/2024', 3).
+producto(12, chorizo, 'no', '25/09/2024', 3).

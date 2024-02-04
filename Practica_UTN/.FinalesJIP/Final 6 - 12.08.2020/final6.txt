@@ -1,0 +1,12 @@
+camion(3, scania, 2015, n1, 1000, 'Camión de lona', '2 ejes', 'Rígido').
+camion(2, a, 2015, n2, 1000, 'Plataforma abierta', '3 ejes', 'Articulado').
+camion(5, c, 2018, n1, 1000, 'Plataforma abierta', '4 ejes', 'Rígido').
+camion(9, scania, 2020, n3, 2000, 'Camión de lona', '2 ejes','Trailer').
+camion(8, scania, 2020, n1, 5000, 'Plataforma abierta', '4 ejes', 'Trailer').
+camion(1, b, 2016, n1, 1500, 'Camión de lona', '2 ejes', 'Rígido').
+
+conductor(1, 'Juan', 56, 'Rosario', [3,5]).
+conductor(2, 'Pedro', 56, 'Rosario', [3,2,1]).
+conductor(3, 'Mario', 56, 'Rosario', [3,5,8]).
+conductor(4, 'Miguel', 56, 'Rosario', [3]).
+conductor(5, 'Roberto', 56, 'Rosario', [2]).

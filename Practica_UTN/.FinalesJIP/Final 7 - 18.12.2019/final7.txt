@@ -1,0 +1,25 @@
+docente(1,juan,30,123,'Zeballos 1500',rosario).
+docente(2,roberto,25,130,'Roca 500',casilda).
+docente(3,miguel,70,307,'Cochabamba 100',rosario).
+docente(4,silvia,50,330,'Pellegrini 151',venado).
+docente(5,andrea,38,130,'Mitre 111',rosario).
+docente(6,claudia,55,110,'San Martn 15',rosario).
+
+colegio(mitre,mitre,'rosario').
+colegio(zeballos,zeballos,'rosario').
+colegio(beltran,beltran,'rosario').
+colegio(belgrano,belgrano,'rosario').
+colegio(cochabamba,cochabamba,'casilda').
+colegio(escalada,escalada,'venado').
+
+colegio_docentes(mitre,1,[matematica,ingles,fisica,quimica]).
+colegio_docentes(zeballos,1,[lengua,ingles,literatura]).
+colegio_docentes(beltran,1,[matematica,ingles]).
+
+colegio_docentes(cochabamba,2,[informatica,computacion]).
+colegio_docentes(escalada,2,[informatica]).
+
+colegio_docentes(beltran,3,[fisica,quimica]).
+colegio_docentes(belgrano,3,[ciencias,matematica]).
+
+colegio_docentes(belgrano,4,[matematica,ingles]).

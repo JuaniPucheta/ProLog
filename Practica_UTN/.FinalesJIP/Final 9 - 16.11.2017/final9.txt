@@ -1,0 +1,16 @@
+jardin(1, [sala_azul, sala_verde]).
+jardin(2, [sala_roja, sala_verde]).
+jardin(3, [sala_azul, sala_roja, sala_amarilla]).
+jardin(4, [sala_amarilla]).
+jardin(5, [sala_roja, sala_amarilla]).
+
+salas(1, sala_azul, [123, 456, 789]).
+salas(1, sala_verde, [456, 789, 101]).
+salas(2, sala_roja, [234, 567, 890]).
+salas(2, sala_verde, [567, 890, 123]).
+salas(3, sala_azul, [789, 101, 234]).
+salas(3, sala_roja, [101, 234, 567]).
+salas(3, sala_amarilla, [234, 567, 890]).
+salas(4, sala_amarilla, [123, 456, 789]).
+salas(5, sala_roja, [234, 567, 890]).
+salas(5, sala_amarilla, [101, 234, 567]).

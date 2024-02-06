@@ -46,10 +46,10 @@ opcion(1) :-
 
     calcular_consumo_promedio(Dni, Anio, Cantidad, Total) :-
         venta(Dni, _, FechaEntera, Importe),
-        retract(venta(Dni, _, FechaEntera, Importe)),
         sub_atom(FechaEntera, _, 4, 0, FechaAnio),
         atom_number(FechaAnio, AnioInteger),
         AnioInteger = Anio,
+        retract(venta(Dni, _, FechaEntera, Importe)),
         calcular_consumo_promedio(Dni, Anio, CantAux, Subtotal),
         Cantidad is CantAux + 1,
         Total is Subtotal + Importe.
@@ -66,10 +66,10 @@ opcion(2) :-
 
     listado_personas(Descripcion, [H|T]) :-
         venta(H, Descripcion, FechaEntera, _),
-        retract(venta(H, Descripcion, FechaEntera, _)),
         sub_atom(FechaEntera, _, 4, 0, FechaAnio),
         atom_number(FechaAnio, AnioInteger),
         AnioInteger = 2023,
+        retract(venta(H, Descripcion, FechaEntera, _)),
         listado_personas(Descripcion, T).
     listado_personas(_, []).
     

@@ -51,7 +51,7 @@ opcion(1) :-
 
     busca_empleados_totales(Almacen, EmpleadosTotal) :-
         almacen(Almacen, _, ListaSucursales),
-        retract(almacen(Almacen, _, ListaSucursales)),
+        % retract(almacen(Almacen, _, ListaSucursales)),
         cuenta_empleados_sucursal(ListaSucursales, EmpleadosTotal).
     busca_empleados_totales(_, 0).
 
@@ -62,7 +62,6 @@ opcion(1) :-
             EmpleadosParcial is Empleados + EmpleadosAux.
         cuenta_empleados_sucursal([], 0).
 
-%TODO --> consultar, sin retract funciona, no entiendo xq no va el `retract`, es xq solo muestra/lista??
 opcion(2) :-
     write('Ingrese una lista de productos: '), leer(Lista),
     dividir_Por_Vencimiento(Lista, Lista2021, Lista2020, ListaResto), nl,
@@ -75,19 +74,19 @@ opcion(2) :-
 
     dividir_Por_Vencimiento([H|T], [H|T2], Lista2020, ListaResto) :-
         producto(H, _, _, FechaVencimiento, _),
-        % retract(producto(H, _, _, FechaVencimiento, _)),
         sub_atom(FechaVencimiento, _, 4, 0, '2021'),
+        retract(producto(H, _, _, FechaVencimiento, _)),
         dividir_Por_Vencimiento(T, T2, Lista2020, ListaResto).
 
     dividir_Por_Vencimiento([H|T], Lista2021, [H|T2], ListaResto) :-
         producto(H, _, _, FechaVencimiento, _),
-        % retract(producto(H, _, _, FechaVencimiento, _)),
         sub_atom(FechaVencimiento, _, 4, 0, '2020'),
+        retract(producto(H, _, _, FechaVencimiento, _)),
         dividir_Por_Vencimiento(T, Lista2021, T2, ListaResto).
 
     dividir_Por_Vencimiento([H|T], Lista2021, Lista2020, [H|T2]) :-
         producto(H, _, _, _, _),
-        % retract(producto(H, _, _, _, _)),
+        retract(producto(H, _, _, _, _)),
         dividir_Por_Vencimiento(T, Lista2021, Lista2020, T2).
 
     dividir_Por_Vencimiento([], [], [], []).

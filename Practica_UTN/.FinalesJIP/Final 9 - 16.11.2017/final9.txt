@@ -3,6 +3,7 @@ jardin(2, [sala_roja, sala_verde]).
 jardin(3, [sala_azul, sala_roja, sala_amarilla]).
 jardin(4, [sala_amarilla]).
 jardin(5, [sala_roja, sala_amarilla]).
+jardin(6, [sala_roja, sala_verde]).
 
 salas(1, sala_azul, [123, 456, 789]).
 salas(1, sala_verde, [456, 789, 101]).

@@ -77,8 +77,8 @@ opcion(2) :-
 
     busca_conductores_no([CodConductor|T], CodCamion, [NombreConductor|T2]) :-
         conductor(CodConductor, NombreConductor, _, _, CamionesHabilitados),
-        retract(conductor(CodConductor, NombreConductor, _, _, CamionesHabilitados)),
         not(pertenece(CodCamion, CamionesHabilitados)),
+        retract(conductor(CodConductor, NombreConductor, _, _, CamionesHabilitados)),
         busca_conductores_no(T, CodCamion, T2).
 
     busca_conductores_no([_|T], CodCamion, T2) :-

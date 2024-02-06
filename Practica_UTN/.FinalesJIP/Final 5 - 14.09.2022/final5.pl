@@ -33,30 +33,78 @@ inicio :-
 inicio.
 
 %TODO --> consultar | no funciona, solo trae `coca`, es igual que en ad2.pl
+%TODO intentar rehacer 
 opcion(1) :-
     write('Ingrese una lista de sucursales: '), leer(ListaSucursales),
-    dividir_por_conservacion(ListaSucursales, ListaConRefri, ListaSin), nl,
+    dividir_por_conservacion(ListaSucursales, ListaConRefri, ListaSin),
     write('Lista con refrigeracion: '), write(ListaConRefri), nl,
     write('Lista sin refrigeracion: '), write(ListaSin), nl.
 
     leer([H|T]) :- read(H), H \= [], leer(T).
     leer([]).
 
-    dividir_por_conservacion([H|T], [NombreProducto|T2], ListaSin) :-
-        % sucursal(H, _),
-        % retract(sucursal(H, _)),
-        producto(IdProducto, NombreProducto, 'si', _, H),
-        retract(producto(IdProducto, NombreProducto, 'si', _, H)),
+    dividir_por_conservacion([IdSucursal|T], [Producto|T2], ListaSin) :-
+        producto(_, Producto, 'si', _, IdSucursal),
         dividir_por_conservacion(T, T2, ListaSin).
 
-    dividir_por_conservacion([H|T], ListaConRefri, [NombreProducto|T3]) :-
-        % sucursal(H, _),
-        % retract(sucursal(H, _)),
-        producto(IdProducto, NombreProducto, 'no', _, H),
-        retract(producto(IdProducto, NombreProducto, 'no', _, H)),
+    dividir_por_conservacion([IdSucursal|T], ListaConRefri, [Producto|T3]) :-
+        producto(_, Producto, 'no', _, IdSucursal),
         dividir_por_conservacion(T, ListaConRefri, T3).
 
     dividir_por_conservacion([], [], []).
+
+% opcion(1) :-
+%     write('Ingrese una lista de sucursales: '), leer(ListaSucursales),
+%     dividir_por_conservacion(ListaSucursales, ListaConRefri, ListaSin), nl,
+%     write('Lista con refrigeracion: '), write(ListaConRefri), nl,
+%     write('Lista sin refrigeracion: '), write(ListaSin), nl.
+
+%     leer([H|T]) :- read(H), H \= [], leer(T).
+%     leer([]).
+
+%     dividir_por_conservacion([H|T], [NombreProducto|T2], ListaSin) :-
+%         % sucursal(H, _),
+%         % retract(sucursal(H, _)),
+%         producto(IdProducto, NombreProducto, 'si', _, H),
+%         retract(producto(IdProducto, NombreProducto, 'si', _, H)),
+%         dividir_por_conservacion(T, T2, ListaSin).
+
+%     dividir_por_conservacion([H|T], ListaConRefri, [NombreProducto|T3]) :-
+%         % sucursal(H, _),
+%         % retract(sucursal(H, _)),
+%         producto(IdProducto, NombreProducto, 'no', _, H),
+%         retract(producto(IdProducto, NombreProducto, 'no', _, H)),
+%         dividir_por_conservacion(T, ListaConRefri, T3).
+
+%     dividir_por_conservacion([], [], []).
+
+% opcion(1):- write("Ingrese la lista de sucursales"),
+%             leer(Lista),
+%             recorrer_lista(Lista, ListaSi, ListaNo),
+%             write("Los listados son: "), nl, 
+%             write(ListaSi), nl,
+%             write(ListaNo), nl.
+
+%     leer([H|T]):- read(H), H\=[],leer(T).
+%     leer([]).                                                
+
+    
+%     recorrer_lista([], _, _).
+%     recorrer_lista([H|T], ListaSi, ListaNo):-    dividir_por_conservacion(H, ListaSi, ListaNo),
+%                                                 write("== Entro"), nl, write(ListaSi), nl, write(ListaNo), nl, 
+%                                                     recorrer_lista(T,ListaSi, ListaNo).
+
+%     dividir_por_conservacion(IdSuc, [Id|T], ListaNo):-     write("== SI"), nl, 
+%                                                             producto(Id, _, 'si', _, IdSuc),
+%                                                             retract(producto(Id, _, 'si', _, IdSuc)),
+%                                                             dividir_por_conservacion(IdSuc, T, ListaNo).
+
+%     dividir_por_conservacion(IdSuc, ListaSi, [Id|T]):-     write("== NO"), nl, 
+%                                                         producto(Id, _, 'no', _, IdSuc),
+%                                                         retract(producto(Id, _, 'no', _, IdSuc)),
+%                                                         dividir_por_conservacion(IdSuc, ListaSi, T).
+
+%     dividir_por_conservacion(_, [], []).
 
 opcion(2) :-
     listar_sucursales_vencimiento(Lista, Sucursales), nl,

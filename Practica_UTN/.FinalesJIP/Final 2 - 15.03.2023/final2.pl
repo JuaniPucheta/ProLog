@@ -42,10 +42,10 @@ opcion(1) :-
     buscar_autos(_, _, []).
     buscar_autos(Max, Min, ListaCaract) :-
         vehiculos(Marca, Precio, Vehiculo, Estado, ListaCodigos),
-        retract(vehiculos(Marca, Precio, Vehiculo, Estado, ListaCodigos)),
         pertenece_lista(ListaCaract, ListaCodigos),
         Precio > Min,
         Precio < Max,
+        retract(vehiculos(Marca, Precio, Vehiculo, Estado, ListaCodigos)),
         write('Marca: '), write(Marca), nl,
         write('Precio del vehiculo: '), write(Precio), nl,
         write('Vehiculo: '), write(Vehiculo), nl,
@@ -72,8 +72,8 @@ opcion(2) :-
 
     autos_cumplen(CodCaracteristica, Estado, Cantidad) :-
         vehiculos(_, _, auto, Estado, ListaCaract),
-        retract(vehiculos(_, _, auto, Estado, ListaCaract)),
         pertenece(CodCaracteristica, ListaCaract),
+        retract(vehiculos(_, _, auto, Estado, ListaCaract)),
         autos_cumplen(CodCaracteristica, Estado, CantAux),
         Cantidad is CantAux + 1.
     autos_cumplen(_,_,0).

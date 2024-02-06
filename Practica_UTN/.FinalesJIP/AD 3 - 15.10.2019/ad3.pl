@@ -71,10 +71,10 @@ opcion(2) :-
 
     calcular_salario_promedio(IdProvincia, IdCandidato, Contador, Total) :-
         localidad(IdLocalidad, _, IdProvincia),
-        retract(localidad(IdLocalidad, _, IdProvincia)),
         persona(Dni, _, _, Salario, IdLocalidad),
-        retract(persona(Dni, _, _, Salario, IdLocalidad)),
         intencion_de_voto(Dni, IdCandidato),
+        retract(localidad(IdLocalidad, _, IdProvincia)),
+        retract(persona(Dni, _, _, Salario, IdLocalidad)),
         calcular_salario_promedio(IdProvincia, IdCandidato, ContAux, Subtotal),
         Contador is ContAux + 1,
         Total is Subtotal + Salario.

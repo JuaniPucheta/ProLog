@@ -43,8 +43,8 @@ opcion(1) :-
 
     edad_promedio_profesion(Profesion, Cantidad, Total) :-
         personas(_, Edad, ListaProfesiones, 'rosario'),
-        retract(personas(_, Edad, ListaProfesiones, _)),
         pertenece(Profesion, ListaProfesiones),
+        retract(personas(_, Edad, ListaProfesiones, _)),
         edad_promedio_profesion(Profesion, CantAux, Subtotal),
         Cantidad is CantAux + 1,
         Total is Subtotal + Edad.
@@ -60,8 +60,8 @@ opcion(2) :-
     busca_cursos(Profesion) :-
         cursos(Profesion, Cursos),
         personas_cursos(Persona, Profesion, CursosRealizados),
-        retract(personas_cursos(Persona, Profesion, CursosRealizados)),
         armar_lista_faltante(Cursos, CursosRealizados, Faltantes), nl,
+        retract(personas_cursos(Persona, Profesion, CursosRealizados)),
         write('Cursos que faltan realizar a '), write(Persona), write(': '), write(Faltantes), nl,
         busca_cursos(Profesion).
     busca_cursos(_).
@@ -75,20 +75,38 @@ opcion(2) :-
 
         armar_lista_faltante([], _, []).
 
-%TODO --> consultar | me tira error de `Arguments are not sufficiently instantiated`
+%TODO --> consultar
 opcion(3) :-
     profesion_con_mas_cursos(Profesion, Cantidad), nl,
     write('Profesion: '), write(Profesion), write(' - cursos: '), write(Cantidad), nl.
 
     profesion_con_mas_cursos(Profesion, Cantidad) :-
         cursos(Profesion, Cursos),
-        retract(cursos(Profesion, Cursos)),
         conteo(Cursos, CantAux),
+        retract(cursos(Profesion, Cursos)),
+        profesion_con_mas_cursos(Profesion, CantAux),
         CantAux > Cantidad,
-        profesion_con_mas_cursos(Profesion, CantAux).
+        Cantidad is CantAux.
     profesion_con_mas_cursos(_, 0).
 
         conteo([], 0).
         conteo([_|T], CantAux) :-
             conteo(T, Aux),
             CantAux is Aux + 1.
+
+% opcion(3) :-
+%     profesion_con_mas_cursos(Profesion, 0, Mayor), nl,
+%     write('Profesion: '), write(Profesion), write(' - cursos: '), write(Mayor), nl.
+
+%     profesion_con_mas_cursos(_, Mayor, Mayor).
+%     profesion_con_mas_cursos(Profesion, MHM, Mayor) :-
+%         cursos(Profesion, Cursos),
+%         conteo(Cursos, Contador),
+%         retract(cursos(Profesion, Cursos)),
+%         Contador > MHM,
+%         profesion_con_mas_cursos(Profesion, Contador, Mayor).
+
+%         conteo([], 0).
+%         conteo([_|T], Contador) :-
+%             conteo(T, ContAux),
+%             Contador is ContAux + 1.

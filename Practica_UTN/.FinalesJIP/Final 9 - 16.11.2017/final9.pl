@@ -30,11 +30,10 @@ inicio :-
     inicio.
 inicio.
 
-%TODO --> funciona, pero sin el retract, no entiendo cuando usarlo y cuando no
 opcion(1) :-
     write('Ingrese una lista de dni: '), leer(ListaDni),
-    write('Ingrese codigo de jardin: '), read(CodJardin),
-    buscar_dnis(CodJardin, ListaDni, Asistentes), nl,
+    write('Ingrese codigo de jardin: '), read(CodigoJardin),
+    buscar_dnis(ListaDni, CodigoJardin, Asistentes), nl,
     write('Dnis que asisten: '), write(Asistentes), nl.
 
     leer([H|T]) :- read(H), H \= [], leer(T).
@@ -43,38 +42,39 @@ opcion(1) :-
     pertenece(X, [X|_]).
     pertenece(X, [_|T]) :- pertenece(X, T).
 
-    buscar_dnis(CodigoJardin, [H|T1], [H|T2]) :-
+    buscar_dnis([H|T1], CodigoJardin, [H|T2]) :-
         salas(CodigoJardin, _, DniSalas),
-        % retract(salas(CodigoJardin, _, DniSalas)),
         pertenece(H, DniSalas),
-        buscar_dnis(CodigoJardin, T1, T2).
+        % retract(salas(CodigoJardin, _, DniSalas)),
+        buscar_dnis(T1, CodigoJardin, T2).
 
-    buscar_dnis(CodigoJardin, [_|T1], T2) :-
-        buscar_dnis(CodigoJardin, T1, T2).
+    buscar_dnis([_|T1], CodigoJardin, T2) :-
+        buscar_dnis(T1, CodigoJardin, T2).
 
-    buscar_dnis(_, [], []).
+    buscar_dnis([], _, []).
 
 opcion(2) :-
     write('Ingrese una lista de jardines: '), leer(ListaJardines),
     write('Ingrese una lista de tipos de sala'), leer(ListaTiposSala),
     lista_jardines_sala(ListaJardines, ListaTiposSala, NuevaLista), nl,
-    write('Lista de jardines con todos los tipos de sala: '), write(NuevaLista), nl.
+    write('Lista de jardines con todos los tipos de sala: '), 
+    write(NuevaLista), nl.
 
     lista_jardines_sala([], _, []).
 
     lista_jardines_sala([H|T], ListaTiposSala, [H|T2]) :-
         jardin(H, ListaSalasJardin),
         retract(jardin(H, ListaSalasJardin)),
-        tiene_todos(ListaTiposSala, ListaSalasJardin),
+        pertenece_lista(ListaTiposSala, ListaSalasJardin),
         lista_jardines_sala(T, ListaTiposSala, T2).
 
     lista_jardines_sala([_|T], ListaTiposSala, T2) :-
         lista_jardines_sala(T, ListaTiposSala, T2).
 
-        tiene_todos([], _).
-        tiene_todos([H|T], ListaSalasJardin) :-
+        pertenece_lista([], _).
+        pertenece_lista([H|T], ListaSalasJardin) :-
             pertenece(H, ListaSalasJardin),
-            tiene_todos(T, ListaSalasJardin).
+            pertenece_lista(T, ListaSalasJardin).
         
 
 

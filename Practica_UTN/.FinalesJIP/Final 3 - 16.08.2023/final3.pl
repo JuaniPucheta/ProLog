@@ -28,25 +28,24 @@ inicio :-
     inicio.
 inicio.
 
-
 %! Importante --> aprender este tipo de Contador en donde hago un metodo general y lo llamo varias veces 
 opcion(1) :-
     calcular_cant_viajes.
 
-calcular_cant_viajes:-
-    unidades(NroUnidad, _, _),
-    retract(unidades(NroUnidad, _, _)),
-    cant_viajes(NroUnidad, Cantidad),
-    write('Unidad: '), write(NroUnidad), write(', viajes: '), write(Cantidad), nl,
+    calcular_cant_viajes:-
+        unidades(NroUnidad, _, _),
+        cant_viajes(NroUnidad, Cantidad),
+        retract(unidades(NroUnidad, _, _)),
+        write('Unidad: '), write(NroUnidad), write(', viajes: '), write(Cantidad), nl,
+        calcular_cant_viajes.
     calcular_cant_viajes.
-calcular_cant_viajes.
 
-cant_viajes(NroUnidad, Cantidad) :-
-    viajes(NroUnidad, _),
-    retract(viajes(NroUnidad, _)),
-    cant_viajes(NroUnidad, CantAux),
-    Cantidad is CantAux + 1.
-cant_viajes(_, 0).
+    cant_viajes(NroUnidad, Cantidad) :-
+        viajes(NroUnidad, _),
+        retract(viajes(NroUnidad, _)),
+        cant_viajes(NroUnidad, CantAux),
+        Cantidad is CantAux + 1.
+    cant_viajes(_, 0).
 
 %! Importante --> estudiar esto, armar una nueva lista en base a otra con filtro
 opcion(2) :-
@@ -61,9 +60,9 @@ opcion(2) :-
 
     listar_unidades([H|T1], [H|T2]) :-
         unidades(H, _, _),
-        retract(unidades(H, _, _)),
         calcular_costo(H, Total),
         Total > 5000,
+        retract(unidades(H, _, _)),
         listar_unidades(T1, T2).
 
     listar_unidades([_|T1], T2) :-

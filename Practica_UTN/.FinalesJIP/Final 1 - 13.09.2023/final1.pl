@@ -34,7 +34,6 @@ inicio :-
     inicio.
 inicio.
 
-%TODO --> consultar, actualmente, muestra todos pero con Traumatologo x2
 %* Sin lista
 %  opcion(1) :- 
 %     write('Ingrese un paciente: '), read(Paciente),
@@ -50,27 +49,31 @@ inicio.
 %         listar_especialidades(Paciente, Anio).
 %     listar_especialidades(_,_,[]).
 
-%* Con lista
+%* Con lista - `juan` y `2023`
 opcion(1) :-
     write('Ingrese un paciente: '), read(Paciente),
     write('Ingrese un anio: '), read(Anio),
-    listar_especialidades(Paciente, Anio, Especialidades),
-    write('Especialidades de ese paciente para es anio: '), write(Especialidades), nl.
+    listar_especialidades(Paciente, Anio, ListaEspecialidades),
+    write('Especialidades de ese paciente para es anio: '), write(ListaEspecialidades), nl.
 
-    listar_especialidades(Paciente, Anio, [H|T]) :-
+    listar_especialidades(Paciente, Anio, [Especialidad|T]) :-
         paciente(Dni, Paciente, _),
-        turno(Dni, _, H, Anio, _, _), nl,
-        retract(turno(Dni, _, H, Anio, _, _)),
-        listar_especialidades(Paciente, Anio, T).
+        turno(Dni, _, Especialidad, Anio, _, _),
+        retract(turno(Dni, _, Especialidad, Anio, _, _)),
+        listar_especialidades(Paciente, Anio, T),
+        not(pertenece(Especialidad, T)).
     listar_especialidades(_,_,[]).
+
+        pertenece(X, [X|_]).
+        pertenece(X, [_|T]) :- pertenece(X, T).
 
 opcion(2) :-
     buscar_cantidad_turnos.
 
     buscar_cantidad_turnos :-
         profesional(DniProf, NombreProf, _, _),
-        retract(profesional(DniProf, NombreProf, _, _)),
-        calcularCantidadTurnos(DniProf, Cantidad), nl,
+        calcularCantidadTurnos(DniProf, Cantidad),
+        retract(profesional(DniProf, NombreProf, _, _)), nl,
         write('Profesional: '), write(NombreProf), nl,
         write('Cantidad de turnos: '), write(Cantidad),
         buscar_cantidad_turnos.
@@ -78,8 +81,8 @@ opcion(2) :-
 
     calcularCantidadTurnos(DniProf, Cantidad) :-
         turno(_, DniProf, _, _, _, Monto),
-        retract(turno(_, DniProf, _, _, _, Monto)),
         Monto > 1500,
+        retract(turno(_, DniProf, _, _, _, Monto)),
         calcularCantidadTurnos(DniProf, CantAux),
         Cantidad is CantAux + 1.
     calcularCantidadTurnos(_, 0).
